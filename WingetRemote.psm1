@@ -69,4 +69,4 @@ function winget {
 }
 
 # Esporta solamente la funzione wrapper 'winget'
-Export-ModuleMember -Function winget
+#Export-ModuleMember -Function winget
