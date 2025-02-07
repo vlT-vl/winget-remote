@@ -12,7 +12,6 @@ function enable-localmanifest {
         Start-Process -FilePath "winget.exe" -ArgumentList "settings --enable LocalManifestFiles" -Verb RunAs -Wait
     }
     else {
-        #Write-Host "🟢 Abilitazione delle impostazioni locali per i manifest..." -ForegroundColor Green
         winget.exe settings --enable LocalManifestFiles
     }
 }
@@ -38,7 +37,7 @@ function remote {
         Invoke-WebRequest -Uri $Url -OutFile $manifestPath -UseBasicParsing
 
         Write-Host ""
-        Write-Host "🔄 Validando il manifesto scaricato..." -ForegroundColor Yellow
+        Write-Host "🔄 Valido il manifesto scaricato, prima di procedere con installazione..." -ForegroundColor Yellow
         $validateOutput = winget.exe validate --manifest $manifestPath 2>&1
 
         if ($LASTEXITCODE -eq 0) {
@@ -62,11 +61,6 @@ function argspars {
         [Parameter(Mandatory = $true)]
         [string[]]$Arguments
     )
-    if ($Arguments.Count -lt 1) {
-        Write-Host "❌ Utilizzo corretto: winget remote <URL>" -ForegroundColor Red
-        return
-    }
-
     $url = $Arguments[0]
 
     # Verifica che l'argomento sia un URL valido
@@ -92,8 +86,8 @@ function winget {
     # Se il primo argomento è "remote", gestisce il comando custom.
     if ($Args.Count -ge 1 -and $Args[0].ToLower() -eq "remote") {
         if ($Args.Count -eq 1) {
-          Write-Host "winget remote"
-          Write-Host "build r001-07022025"
+          Write-Host "winget remote" -ForegroundColor blue
+          Write-Host "copyright © 2025 vlT di Veronesi Lorenzo"
           Write-Host ""
           Write-Host "per installare manifest remoti --> winget remote <URL>" -ForegroundColor Cyan
             return
