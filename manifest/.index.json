@@ -1,0 +1,29 @@
+{
+  "Packages": [
+    {
+      "Id": "Microsoft.M365",
+      "Publisher": "Microsoft",
+      "Name": "Microsoft365",
+      "Version": "16.0",
+      "ManifestRelativePath": "manifest\\m365.yaml",
+      "ManifestURL": "https://raw.githubusercontent.com/vlT-vl/winget-remote/refs/heads/main/manifest/m365.yaml"
+    },
+    {
+      "Id": "PulsarEdit.Pulsar",
+      "Publisher": "PulsarEdit",
+      "Name": "Pulsar",
+      "Version": "1.125.0",
+      "ManifestRelativePath": "manifest\\pulsar.yaml",
+      "ManifestURL": "https://raw.githubusercontent.com/vlT-vl/winget-remote/refs/heads/main/manifest/pulsar.yaml"
+    },
+    {
+      "Id": "S2E.Sophos",
+      "Publisher": "Sophos",
+      "Name": "Sophos S2E",
+      "Version": "1.19",
+      "ManifestRelativePath": "manifest\\sophos-s2e.yaml",
+      "ManifestURL": "https://raw.githubusercontent.com/vlT-vl/winget-remote/refs/heads/main/manifest/sophos-s2e.yaml"
+    }
+  ],
+  "ManifestLastUpdate": "07/02/2025 14:20:55"
+}
