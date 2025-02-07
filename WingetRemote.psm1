@@ -57,7 +57,7 @@ function remote {
         if ($LASTEXITCODE -eq 0) {
             Write-Host ""
             Write-Host "✅ Manifest valido. Procedo con l'installazione..." -ForegroundColor Green
-            winget.exe install --manifest $manifestPath
+            winget.exe install --manifest $manifestPath --silent --accept-package-agreements --accept-source-agreements
         }
         else {
             Write-Host "❌ Manifest non valido. Dettagli: $validateOutput" -ForegroundColor Red
