@@ -10,5 +10,5 @@ Installers:
     Sha256: 52BFA6FEB73B2E1C7FD01E46421312E66D87ECA96409FD9517112321088B9372
     InstallerType: exe
     Switches:
-      Silent: "/S"
-      SilentWithProgress: "/S"
+      Silent: ""
+      SilentWithProgress: ""
