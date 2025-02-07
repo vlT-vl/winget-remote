@@ -12,8 +12,8 @@ function remote {
             throw "URL del manifest non specificato."
         }
 
-        Write-Host "Abilito Funzionalità installzione manifest locali..."
-        winget.exe settings --enable LocalManifestFiles
+        #Write-Host "Abilito Funzionalità installzione manifest locali..."
+        localmanifestenabler
 
         # Salva il manifesto in una posizione temporanea
         $manifestPath = Join-Path $env:TEMP "remote-manifest.yaml"
@@ -37,18 +37,41 @@ function remote {
     }
 }
 
+function localmanifestenabler {
+    # Verifica se l'utente corrente ha privilegi di amministratore.
+    $isAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+    if (-not $isAdmin) {
+        Write-Host "Il comando richiede privilegi amministrativi. Verrà richiesto il prompt UAC."
+        Start-Process -FilePath "winget.exe" -ArgumentList "settings --enable LocalManifestFiles" -Verb RunAs -Wait
+    }
+    else {
+        winget.exe settings --enable LocalManifestFiles
+    }
+}
+
 function argspars {
     param(
         [Parameter(Mandatory = $true)]
         [string[]]$Arguments
     )
     if ($Arguments.Count -lt 1) {
-        Write-Error "URL del manifest non specificato. Utilizzo corretto: winget remote <URL>"
+        Write-Host "Utilizzo corretto: winget remote <URL>"
         return
     }
 
-    # Il primo argomento è considerato l'URL del manifesto
     $url = $Arguments[0]
+
+    # Verifica che l'argomento sia un URL valido
+    if (-not [Uri]::IsWellFormedUriString($url, [UriKind]::Absolute)) {
+        Write-Error "L'argomento fornito non è un URL valido."
+        return
+    }
+
+    # Verifica che l'URL termini con '.yaml'
+    if (-not $url.ToLower().EndsWith(".yaml")) {
+        Write-Error "L'URL deve puntare a un file con estensione .yaml."
+        return
+    }
     remote -Url $url
 }
 
