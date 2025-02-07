@@ -2,6 +2,9 @@
 # Copyright © 2025 vlT di Veronesi Lorenzo
 #******************************************************************************
 
+$global:WingetRemoteVersion = "v0.0.1"
+$global:WingetRemoteBuild = "R001-07022025"
+
 function enable-localmanifest {
     # Verifica se l'utente corrente ha privilegi di amministratore.
     $isAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
@@ -62,6 +65,18 @@ function argspars {
         [string[]]$Arguments
     )
     $url = $Arguments[0]
+
+    # Controlla se l'utente ha richiesto la versione del modulo
+    if ($url -eq "-v") {
+        Write-Host "winget remote build: $global:WingetRemoteVersion" -ForegroundColor Cyan
+        return
+    }
+
+    # Controlla se l'utente ha richiesto la build del modulo
+    if ($url -eq "--build") {
+        Write-Host "winget remote build: $global:WingetRemoteBuild" -ForegroundColor Cyan
+        return
+    }
 
     # Verifica che l'argomento sia un URL valido
     if (-not [Uri]::IsWellFormedUriString($url, [UriKind]::Absolute)) {
