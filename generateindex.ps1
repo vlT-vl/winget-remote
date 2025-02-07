@@ -22,7 +22,6 @@ function Generate-Index {
             "Name" = $manifest.Name
             "Version" = $manifest.Version
             "Publisher" = $manifest.Publisher
-            "ManifestRelativePath" = $file.FullName.Substring((Get-Location).Path.Length + 1)
             "ManifestURL" = $manifestUrl
         }
 
