@@ -37,7 +37,7 @@ function remote {
         Invoke-WebRequest -Uri $Url -OutFile $manifestPath -UseBasicParsing
 
         Write-Host ""
-        Write-Host "🔄 Valido il manifesto scaricato, prima di procedere con installazione..." -ForegroundColor Yellow
+        Write-Host "🔄 Valido il manifest scaricato, prima di procedere con installazione..." -ForegroundColor Yellow
         $validateOutput = winget.exe validate --manifest $manifestPath 2>&1
 
         if ($LASTEXITCODE -eq 0) {
