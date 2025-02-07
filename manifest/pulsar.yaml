@@ -1,0 +1,14 @@
+Id: PulsarEdit.Pulsar
+Publisher: PulsarEdit
+Name: Pulsar
+Version: "1.125.0"
+AppMoniker: pulsar
+License: MIT
+Installers:
+  - Arch: x64
+    Url: "https://github.com/pulsar-edit/pulsar/releases/download/v1.125.0/Windows.Pulsar.Setup.1.125.0.exe"
+    Sha256: 7f45f15c77014da857845b33af9fb762f95bad0aef56715d91102cccf5f601d5
+    InstallerType: exe
+    Switches:
+      Silent: "/S"
+      SilentWithProgress: "/S"
