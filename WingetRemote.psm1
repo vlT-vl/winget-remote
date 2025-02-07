@@ -2,7 +2,7 @@
 # Copyright © 2025 vlT di Veronesi Lorenzo
 #******************************************************************************
 
-global:WingetRemoteVersion = "v0.0.1"
+$global:WingetRemoteVersion = "v0.0.1"
 $global:WingetRemoteBuild = "R001-07022025"
 
 function enable-localmanifest {
