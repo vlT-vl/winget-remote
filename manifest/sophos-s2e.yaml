@@ -1,0 +1,14 @@
+Id: S2E.Sophos
+Publisher: Sophos
+Name: Sophos S2E
+Version: "1.19"
+AppMoniker: sophoss2e
+License: MIT
+Installers:
+  - Arch: x64
+    Url: "https://github.com/vlT-vl/cdn-vlt/raw/refs/heads/main/s2e/exesetup/SophosSetup.exe"
+    Sha256: 29E94D3C92E2BFC41CEE4A666871E900C59B049AF97FBCD83B338C302301D600
+    InstallerType: exe
+    Switches:
+      Silent: "--quiet"
+      SilentWithProgress: "--quiet"
