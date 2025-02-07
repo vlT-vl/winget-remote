@@ -57,13 +57,19 @@ function winget {
         [Parameter(ValueFromRemainingArguments = $true)]
         [string[]]$Args
     )
-    # Se il primo argomento è "remote", utilizza il comando custom
+    # Se il primo argomento è "remote"...
     if ($Args.Count -ge 1 -and $Args[0].ToLower() -eq "remote") {
-        $remoteArgs = if ($Args.Count -gt 1) { $Args[1..($Args.Count - 1)] } else { @() }
-        argspars -Arguments $remoteArgs
+        if ($Args.Count -eq 1) {
+            Write-Host "Utilizzo corretto: winget remote <URL>"
+            return
+        }
+        else {
+            $remoteArgs = $Args[1..($Args.Count - 1)]
+            argspars -Arguments $remoteArgs
+        }
     }
     else {
-        # Per tutti gli altri comandi inoltra gli argomenti a winget.exe
+        # Per tutte le altre chiamate inoltra gli argomenti a winget.exe
         winget.exe @Args
     }
 }
