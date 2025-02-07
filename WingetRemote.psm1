@@ -31,7 +31,7 @@ function remote {
         }
 
         # Controlla se l'argomento è un'opzione speciale
-        if ($Url -eq "-v") {
+        if ($Url -eq "--version") {
             Write-Host "winget remote [version]: $global:WingetRemoteVersion" -ForegroundColor Cyan
             return
         }
@@ -76,12 +76,11 @@ function winget {
 
     if ($Args.Count -ge 1 -and $Args[0].ToLower() -eq "remote") {
         if ($Args.Count -eq 1) {
-            Write-Host ""
             Write-Host "winget remote" -ForegroundColor blue
             Write-Host "copyright © 2025 vlT di Veronesi Lorenzo"
             Write-Host ""
             Write-Host "installare manifest remoti --> winget remote <URL>" -ForegroundColor Cyan
-            Write-Host "versione --> winget remote -v" -ForegroundColor Cyan
+            Write-Host "versione --> winget remote --version" -ForegroundColor Cyan
             Write-Host "build --> winget remote --build" -ForegroundColor Cyan
             return
         }
